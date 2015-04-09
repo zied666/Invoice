@@ -34,7 +34,7 @@
                 </div>
             </a>
         </li>
-        <li>
+        <li {% if app.request.getPathInfo|split('/facture')|length > 1 %}class="active open" {% endif %}>
             <a href="javascript:void(0)">
                 <div class="item-content">
                     <div class="item-media">
@@ -46,13 +46,13 @@
                 </div>
             </a>
             <ul class="sub-menu">
-                <li>
+                <li {% if app.request.get('_route')=='liste' %}class="active"{% endif %}>
                     <a href="table_basic.html">
                         <span class="title">Mes factures</span>
                     </a>
                 </li>
-                <li>
-                    <a href="table_responsive.html">
+                <li {% if app.request.get('_route')=='entete' %}class="active"{% endif %}>
+                    <a href="{{ path('entete') }}">
                         <span class="title">Nouvelle Factures</span>
                     </a>
                 </li>
@@ -78,6 +78,11 @@
                 <li {% if app.request.get('_route')=='tva' %}class="active"{% endif %}>
                     <a href="{{ path('tva') }}">
                         <span class="title">Tva</span>
+                    </a>
+                </li>
+                <li {% if app.request.get('_route')=='user' %}class="active"{% endif %}>
+                    <a href="{{ path('user') }}">
+                        <span class="title">Utilisateurs</span>
                     </a>
                 </li>
             </ul>

@@ -1,0 +1,35 @@
+{% extends "::base.html.twig" %}
+{% block title %}Ajouter une facture{% endblock %}
+{% block body %}
+    <div class="container-fluid container-fullw bg-white">
+        <div class="row">
+            <div class="col-md-12">
+                <h5 class="over-title margin-bottom-15"><span class="text-bold">Ajout d'une facture</span></h5>
+                <form action="{{ path('entete') }}" method="post" role="form" id="form">
+                    {{ form_widget(form._token) }}
+                    <div class="row">
+                        {{ formulaire.input("col-md-2","client",form.client,true) }}
+                        {{ formulaire.input("col-md-2","Nom",form.nomClient,true) }}
+                        {{ formulaire.input("col-md-2","Adresse",form.adresseClient,false) }}
+                        {{ formulaire.input("col-md-2","Matricule Fiscale",form.matriculeFiscale,false) }}
+                        {{ formulaire.input("col-md-2","Tel",form.tel,false) }}
+                        {{ formulaire.input("col-md-2","Email",form.email,false) }}
+                    </div>
+                    <div class="row">
+                        {{ formulaire.input("col-md-2","Montant frais Taxable",form.mntFraisTaxable,true) }}
+                        {{ formulaire.input("col-md-2","Montant frais non TaxableNom",form.mntFraisNonTaxable,true) }}
+                        {{ formulaire.input("col-md-2","Total Tva",form.totalTva,true) }}
+                        {{ formulaire.input("col-md-2","Timbre",form.timbre,true) }}
+                        {{ formulaire.input("col-md-2","Total Remise",form.totalRemise,false) }}
+                        {{ formulaire.input("col-md-2","Frais Dossier",form.fraisDossier,true) }}
+                    </div>
+                    <div class="row">
+                        {{ formulaire.input("col-md-12","Note",form.note,false) }}
+                    </div>
+                    {{ macro.enregistrer }}
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

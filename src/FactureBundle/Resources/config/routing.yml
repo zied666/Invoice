@@ -17,3 +17,23 @@ produit:
 delete_produit:
     path:     /delete_produit/{id}
     defaults: { _controller: FactureBundle:Default:produitDelete }
+
+user:
+    path:     /ref/user/{id}
+    defaults: { _controller: FactureBundle:Default:user,id:null }
+    
+delete_user:
+    path:     /delete_user/{id}
+    defaults: { _controller: FactureBundle:Default:userDelete }
+    
+enabled_user:
+    path:     /enableUser/{id}
+    defaults: { _controller: FactureBundle:Default:enableUser }
+    
+entete:
+    path:     /facture/ajouter
+    defaults: { _controller: FactureBundle:Default:addEntete }    
+    
+liste:
+    path:     /facture
+    defaults: { _controller: FactureBundle:Default:listeEntete }    

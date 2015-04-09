@@ -98,4 +98,50 @@ class Tva
         return $this->compteComptable;
     }
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->produits=new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add produits
+     *
+     * @param \FactureBundle\Entity\Produit $produits
+     * @return Tva
+     */
+    public function addProduit(\FactureBundle\Entity\Produit $produits)
+    {
+        $this->produits[]=$produits;
+
+        return $this;
+    }
+
+    /**
+     * Remove produits
+     *
+     * @param \FactureBundle\Entity\Produit $produits
+     */
+    public function removeProduit(\FactureBundle\Entity\Produit $produits)
+    {
+        $this->produits->removeElement($produits);
+    }
+
+    /**
+     * Get produits
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getProduits()
+    {
+        return $this->produits;
+    }
+    
+    public function __toString()
+    {
+        return $this->valeur." %";
+    }
+
 }

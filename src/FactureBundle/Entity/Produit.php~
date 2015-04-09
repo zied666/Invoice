@@ -98,4 +98,27 @@ class Produit
         return $this->libelle;
     }
 
+
+    /**
+     * Set tva
+     *
+     * @param \FactureBundle\Entity\Tva $tva
+     * @return Produit
+     */
+    public function setTva(\FactureBundle\Entity\Tva $tva = null)
+    {
+        $this->tva = $tva;
+
+        return $this;
+    }
+
+    /**
+     * Get tva
+     *
+     * @return \FactureBundle\Entity\Tva 
+     */
+    public function getTva()
+    {
+        return $this->tva;
+    }
 }
