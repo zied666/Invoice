@@ -7,8 +7,16 @@
                 <h5 class="over-title margin-bottom-15"><span class="text-bold">Ajout d'une facture</span></h5>
                 <form action="{{ path('entete') }}" method="post" role="form" id="form">
                     {{ form_widget(form._token) }}
+                    {{ form_widget(form.client) }}
                     <div class="row">
-                        {{ formulaire.input("col-md-2","client",form.client,true) }}
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="control-label">
+                                    Client<span class="symbol required"></span>
+                                </label>
+                                <select class='js-example-basic-single js-states form-control' id='Clientt' ></select>
+                            </div>
+                        </div>
                         {{ formulaire.input("col-md-2","Nom",form.nomClient,true) }}
                         {{ formulaire.input("col-md-2","Adresse",form.adresseClient,false) }}
                         {{ formulaire.input("col-md-2","Matricule Fiscale",form.matriculeFiscale,false) }}
@@ -31,5 +39,39 @@
             </div>
         </div>
     </div>
-
+{% endblock %}
+{% block jquery %}
+    <script>
+        $(document).ready(function() {
+            var client = $("#Clientt");
+            client.empty();
+            $.ajax({
+                url: '{{ asset('Ajax/listeclient.php') }}',
+                dataType: 'json',
+                success: function(json) {
+                    client.empty();
+                    $.each(json, function(index, value) {
+                        client.append('<option value="' + index + '">' + value + '</option>');
+                    });
+                    client.trigger("liszt:updated");
+                }
+            });
+            client.change(function() {
+                var val = $(this).val();
+                $.ajax({
+                    url: '{{ asset('Ajax/client.php') }}',
+                    data: 'id=' + val,
+                    dataType: 'json',
+                    success: function(json) {
+                        $("#facturebundle_entete_client").val(val);
+                        $("#facturebundle_entete_nomClient").val(json['nom']);
+                        $("#facturebundle_entete_adresseClient").val(json['adresse']);
+                        $("#facturebundle_entete_matriculeFiscale").val(json['matricule']);
+                        $("#facturebundle_entete_tel").val(json['tel']);
+                        $("#facturebundle_entete_email").val(json['email']);
+                    }
+                });
+            })
+        })
+    </script>
 {% endblock %}

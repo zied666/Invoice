@@ -47,7 +47,7 @@
             </a>
             <ul class="sub-menu">
                 <li {% if app.request.get('_route')=='liste' %}class="active"{% endif %}>
-                    <a href="table_basic.html">
+                    <a href="{{ path('liste') }}">
                         <span class="title">Mes factures</span>
                     </a>
                 </li>

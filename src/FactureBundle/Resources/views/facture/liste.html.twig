@@ -4,8 +4,8 @@
     <div class="container-fluid container-fullw bg-white">
         <div class="row">
             <div class="col-md-12">
-                <h5 class="over-title margin-bottom-15"><span class="text-bold">Liste des vues</span></h5>
-                <table class="table table-striped table-bordered table-hover table-full-width" id="sample_1">
+                <h5 class="over-title margin-bottom-15"><span class="text-bold">Liste des factures ({{ entetes.getTotalItemCount }})</span></h5>
+                <table class="table table-striped table-bordered table-hover table-full-width">
                     <thead>
                         <tr>
                             <th>id</th>
@@ -31,12 +31,15 @@
                                 <td>{{ entete.showEtat }}</td>
                                 <td>{{ entete.suiviPar.username }}</td>
                                 <td>
-                                    
+
                                 </td>
                             </tr>
                         {% endfor %}
                     </tbody>
                 </table>
+                <div class="navigation">
+                    {{ knp_pagination_render(entetes) }}
+                </div>
             </div>
         </div>
 

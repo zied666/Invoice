@@ -8,6 +8,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class EnteteType extends AbstractType
 {
+
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
@@ -15,26 +16,26 @@ class EnteteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('reference')
-            ->add('dateCreation')
-            ->add('client')
-            ->add('nomClient')
-            ->add('adresseClient')
-            ->add('matriculeFiscale')
-            ->add('tel')
-            ->add('email')
-            ->add('mntFraisTaxable')
-            ->add('mntFraisNonTaxable')
-            ->add('totalTva')
-            ->add('timbre')
-            ->add('totalRemise')
-            ->add('fraisDossier')
-            ->add('etat')
-            ->add('note')
-            ->add('suiviPar')
+                ->add('reference')
+                ->add('dateCreation')
+                ->add('client', 'hidden')
+                ->add('nomClient')
+                ->add('adresseClient')
+                ->add('matriculeFiscale')
+                ->add('tel')
+                ->add('email')
+                ->add('mntFraisTaxable')
+                ->add('mntFraisNonTaxable')
+                ->add('totalTva')
+                ->add('timbre')
+                ->add('totalRemise')
+                ->add('fraisDossier')
+                ->add('etat')
+                ->add('note')
+                ->add('suiviPar')
         ;
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */
@@ -52,4 +53,5 @@ class EnteteType extends AbstractType
     {
         return 'facturebundle_entete';
     }
+
 }
