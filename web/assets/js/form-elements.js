@@ -24,6 +24,15 @@ var FormElements = function() {"use strict";
 			maxboostedstep: 10,
 			postfix: '%'
 		});
+		$("input[name='facturebundle_tva[valeur]']").TouchSpin({
+			min: 0,
+			max: 100,
+			step: 1,
+			decimals: 2,
+			boostat: 5,
+			maxboostedstep: 10,
+			postfix: '%'
+		});
 		$("input[name='demo2']").TouchSpin({
 			min: -1000000000,
 			max: 1000000000,

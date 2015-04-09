@@ -1,0 +1,19 @@
+dashboard:
+    path:     /
+    defaults: { _controller: FactureBundle:Default:index }
+
+tva:
+    path:     /ref/tva/{id}
+    defaults: { _controller: FactureBundle:Default:tva,id:null }
+    
+delete_tva:
+    path:     /delete_tva/{id}
+    defaults: { _controller: FactureBundle:Default:tvaDelete }
+
+produit:
+    path:     /ref/produit/{id}
+    defaults: { _controller: FactureBundle:Default:produit,id:null }
+    
+delete_produit:
+    path:     /delete_produit/{id}
+    defaults: { _controller: FactureBundle:Default:produitDelete }

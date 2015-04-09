@@ -1,0 +1,47 @@
+{% extends "::base.html.twig" %}
+{% block title %}Gestion des tva{% endblock %}
+{% block body %}
+    <div class="container-fluid container-fullw bg-white">
+        <div class="row">
+            <div class="col-md-12">
+                <h5 class="over-title margin-bottom-15"><span class="text-bold">Formulaire</span></h5>
+                <form action="{{ path('tva',{'id':tva.id}) }}" method="post" role="form" id="form">
+                    {{ form_widget(form._token) }}
+                    <div class="row">
+                        {{ formulaire.input("col-md-3","Valeur",form.valeur,true) }}
+                        {{ formulaire.input("col-md-3","Compte Comptable",form.compteComptable,true) }}
+                    </div>
+                    {{ macro.enregistrer }}
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h5 class="over-title margin-bottom-15"><span class="text-bold">Liste des vues</span></h5>
+                <table class="table table-striped table-bordered table-hover table-full-width" id="sample_1">
+                    <thead>
+                        <tr>
+                            <th>Valeur</th>
+                            <th>Compte comptable</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for tva in tvas %}
+                            <tr>
+                                <td>{{ tva }}</td>
+                                <td>{{ tva.compteComptable }}</td>
+                                <td>
+                                    {{ macro.edit(path('tva',{'id':tva.id})) }}
+                                    {{ macro.delete(path('delete_tva',{'id':tva.id})) }}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

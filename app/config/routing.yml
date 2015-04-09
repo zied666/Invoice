@@ -1,3 +1,7 @@
+facture:
+    resource: "@FactureBundle/Resources/config/routing.yml"
+    prefix:   /
+
 user:
     resource: "@UserBundle/Resources/config/routing.yml"
     prefix:   /
