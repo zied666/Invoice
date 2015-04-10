@@ -24,7 +24,7 @@ class Entete
     /**
      * @var string
      *
-     * @ORM\Column(name="reference", type="string", length=20)
+     * @ORM\Column(name="reference", type="string", length=20,nullable=true)
      */
     private $reference;
 
@@ -138,6 +138,11 @@ class Entete
      * @ORM\JoinColumn(name="suiviPar", referencedColumnName="id")
      */
     protected $suiviPar;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Ligne", mappedBy="facture")
+     */
+    protected $lignes;
 
     /**
      * Get id
@@ -515,5 +520,38 @@ class Entete
     public function getSuiviPar()
     {
         return $this->suiviPar;
+    }
+
+    /**
+     * Set etat
+     *
+     * @param integer $etat
+     * @return Entete
+     */
+    public function setEtat($etat)
+    {
+        $this->etat = $etat;
+
+        return $this;
+    }
+
+    /**
+     * Get etat
+     *
+     * @return integer 
+     */
+    public function getEtat()
+    {
+        return $this->etat;
+    }
+    
+    public function showEtat()
+    {
+        if($this->etat==1)
+            return "Brouillon";
+        if($this->etat==2)
+            return "Validée";
+        if($this->etat==9)
+            return "Annulée";
     }
 }

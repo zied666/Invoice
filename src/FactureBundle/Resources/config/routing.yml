@@ -37,3 +37,11 @@ entete:
 liste:
     path:     /facture
     defaults: { _controller: FactureBundle:Default:listeEntete }    
+    
+addligne:
+    path:     /facture/{id}/ligne/{ligne}
+    defaults: { _controller: FactureBundle:Default:addLigne,ligne:null }  
+    
+deleteLigne:
+    path:     /delete/{id}
+    defaults: { _controller: FactureBundle:Default:deleteLigne }  

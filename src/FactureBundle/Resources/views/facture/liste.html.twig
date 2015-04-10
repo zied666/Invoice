@@ -9,12 +9,12 @@
                     <thead>
                         <tr>
                             <th>id</th>
+                            <th>Etat</th>
                             <th>Ref</th>
                             <th>Nom Client</th>
                             <th>Frais Taxable</th>
                             <th>Frais Non Taxable</th>
                             <th>Remise</th>
-                            <th>Etat</th>
                             <th>Par</th>
                             <th>Action</th>
                         </tr>
@@ -23,15 +23,15 @@
                         {% for entete in entetes %}
                             <tr>
                                 <td>{{ entete.id }}</td>
+                                <td>{{ entete.showEtat }}</td>
                                 <td>{{ entete.reference }}</td>
                                 <td>{{ entete.nomClient }}</td>
                                 <td>{{ entete.mntFraisTaxable }}</td>
                                 <td>{{ entete.mntFraisNonTaxable }}</td>
                                 <td>{{ entete.totalRemise }}</td>
-                                <td>{{ entete.showEtat }}</td>
                                 <td>{{ entete.suiviPar.username }}</td>
-                                <td>
-
+                                <td class="center">
+                                    {{ macro.edit(path('addligne',{'id':entete.id})) }}
                                 </td>
                             </tr>
                         {% endfor %}

@@ -138,6 +138,11 @@ class Entete
      * @ORM\JoinColumn(name="suiviPar", referencedColumnName="id")
      */
     protected $suiviPar;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Ligne", mappedBy="entete")
+     */
+    protected $lignes;
 
     /**
      * Get id
@@ -548,5 +553,45 @@ class Entete
             return "Validée";
         if($this->etat==9)
             return "Annulée";
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->lignes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add lignes
+     *
+     * @param \FactureBundle\Entity\Ligne $lignes
+     * @return Entete
+     */
+    public function addLigne(\FactureBundle\Entity\Ligne $lignes)
+    {
+        $this->lignes[] = $lignes;
+
+        return $this;
+    }
+
+    /**
+     * Remove lignes
+     *
+     * @param \FactureBundle\Entity\Ligne $lignes
+     */
+    public function removeLigne(\FactureBundle\Entity\Ligne $lignes)
+    {
+        $this->lignes->removeElement($lignes);
+    }
+
+    /**
+     * Get lignes
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getLignes()
+    {
+        return $this->lignes;
     }
 }

@@ -121,4 +121,9 @@ class Produit
     {
         return $this->tva;
     }
+    
+    public function __toString()
+    {
+        return $this->libelle;
+    }
 }
