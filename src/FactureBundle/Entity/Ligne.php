@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Ligne
  *
- * @ORM\Table(name="comm_facture_ligne")
+ * @ORM\Table(name="comm_ligne")
  * @ORM\Entity
  */
 class Ligne
@@ -588,5 +588,10 @@ class Ligne
     public function __toString()
     {
         return $this->designation;
+    }
+    
+    public function calculeTva()
+    {
+        $this->mntTva=$this->montantTaxable*$this->tauxTva/100;
     }
 }

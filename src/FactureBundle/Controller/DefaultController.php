@@ -258,8 +258,10 @@ class DefaultController extends Controller
                 $ligne=$form->getData();
                 $ligne->setEntete($entete)
                         ->setTauxTva($ligne->getProduit()->getTva()->getValeur())
-                        ->setMntTva(0);
+                        ->calculeTva();
                 $em->persist($ligne);
+                $entete->addLigne($ligne)->update();
+                $em->persist($entete);
                 $em->flush();
                 $session->getFlashBag()->add('success', "ligne crée avec succées avec succées ");
                 return $this->redirect($this->generateUrl("addligne", array(
@@ -278,10 +280,16 @@ class DefaultController extends Controller
     {
         $em=$this->getDoctrine()->getManager();
         $session=$this->getRequest()->getSession();
+        $entete= $ligne->getEntete();
+        $entete->removeLigne($ligne);
+        $entete->update();
         $em->remove($ligne);
+        $em->persist($entete);
         $em->flush();
         $session->getFlashBag()->add('success', "ligne crée avec succées avec succées ");
         return $this->redirect($this->generateUrl("addligne", array('id'=>$ligne->getEntete()->getId())));
     }
+    
+    
 
 }

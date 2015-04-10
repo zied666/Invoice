@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Entete
  *
- * @ORM\Table(name="comm_entete_facture")
+ * @ORM\Table(name="comm_entete")
  * @ORM\Entity
  */
 class Entete
@@ -593,5 +593,39 @@ class Entete
     public function getLignes()
     {
         return $this->lignes;
+    }
+    
+    public function update()
+    {
+        $mntFraisTaxable=0;
+        $mntFraisNonTaxable=0;
+        $Tva=0;
+        $Remise=0;
+        $FraisDossier=0;
+        
+        foreach($this->lignes as  $ligne)
+        {
+            $mntFraisTaxable+=$ligne->getMontantTaxable();
+            $mntFraisNonTaxable+=$ligne->getMontantNonTaxable();
+            $Tva+=$ligne->getMntTva();
+            $Remise+=$ligne->getMontantRemise();
+            $FraisDossier+=$ligne->getFraisDossier();
+        }
+        
+        $this->mntFraisTaxable=$mntFraisTaxable;
+        $this->mntFraisNonTaxable=$mntFraisNonTaxable;
+        $this->totalTva=$Tva;
+        $this->totalRemise=$Remise;
+        $this->fraisDossier=$FraisDossier;
+    }
+    
+    public function getTotal()
+    {
+        return $this->mntFraisNonTaxable+
+               $this->mntFraisTaxable+
+               $this->timbre+
+               $this->totalTva+
+               $this->fraisDossier+
+               (-$this->totalRemise);
     }
 }
