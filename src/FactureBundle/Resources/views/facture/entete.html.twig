@@ -46,7 +46,7 @@
             var client = $("#Clientt");
             client.empty();
             $.ajax({
-                url: '{{ asset('Ajax/listeclient.php') }}',
+                url: '{{ path('listeClient') }}',
                 dataType: 'json',
                 success: function(json) {
                     client.empty();
@@ -59,7 +59,7 @@
             client.change(function() {
                 var val = $(this).val();
                 $.ajax({
-                    url: '{{ asset('Ajax/client.php') }}',
+                    url: '{{ path('detailsClient') }}',
                     data: 'id=' + val,
                     dataType: 'json',
                     success: function(json) {

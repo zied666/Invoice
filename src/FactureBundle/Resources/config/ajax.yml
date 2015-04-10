@@ -1,0 +1,7 @@
+listeClient:
+    path:     /listeClient
+    defaults: { _controller: FactureBundle:Ajax:listeClient }
+
+detailsClient:
+    path:     /detailsClient
+    defaults: { _controller: FactureBundle:Ajax:detailsClient }
