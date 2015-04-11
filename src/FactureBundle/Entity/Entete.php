@@ -1,8 +1,8 @@
 <?php
 
-namespace FactureBundle\Entity;
+namespace FactureBundle\Entity ;
 
-use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping as ORM ;
 
 /**
  * Entete
@@ -12,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Entete
 {
+
     /**
      * @var integer
      *
@@ -19,130 +20,130 @@ class Entete
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    private $id ;
 
     /**
      * @var string
      *
      * @ORM\Column(name="reference", type="string", length=20,nullable=true)
      */
-    private $reference;
+    private $reference ;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="dateCreation", type="date")
      */
-    private $dateCreation;
+    private $dateCreation ;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="client", type="integer")
      */
-    private $client;
+    private $client ;
 
     /**
      * @var string
      *
      * @ORM\Column(name="nomClient", type="string", length=50)
      */
-    private $nomClient;
+    private $nomClient ;
 
     /**
      * @var string
      *
      * @ORM\Column(name="adresseClient", type="string", length=255,nullable=true)
      */
-    private $adresseClient;
+    private $adresseClient ;
 
     /**
      * @var string
      *
      * @ORM\Column(name="matriculeFiscale", type="string", length=255,nullable=true)
      */
-    private $matriculeFiscale;
+    private $matriculeFiscale ;
 
     /**
      * @var string
      *
      * @ORM\Column(name="tel", type="string", length=255,nullable=true)
      */
-    private $tel;
+    private $tel ;
 
     /**
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255,nullable=true)
      */
-    private $email;
+    private $email ;
 
     /**
      * @var string
      *
      * @ORM\Column(name="mntFraisTaxable", type="decimal", precision=11, scale=3, nullable=true)
      */
-    private $mntFraisTaxable;
+    private $mntFraisTaxable ;
 
     /**
      * @var string
      *
      * @ORM\Column(name="mntFraisNonTaxable", type="decimal", precision=11, scale=3, nullable=true)
      */
-    private $mntFraisNonTaxable;
+    private $mntFraisNonTaxable ;
 
     /**
      * @var string
      *
      * @ORM\Column(name="totalTva", type="decimal", precision=11, scale=3, nullable=true)
      */
-    private $totalTva;
+    private $totalTva ;
 
     /**
      * @var string
      *
      * @ORM\Column(name="timbre", type="decimal", precision=11, scale=3, nullable=true)
      */
-    private $timbre;
+    private $timbre ;
 
     /**
      * @var string
      *
      * @ORM\Column(name="totalRemise", type="decimal", precision=11, scale=3,nullable=true, nullable=true)
      */
-    private $totalRemise;
+    private $totalRemise ;
 
     /**
      * @var string
      *
      * @ORM\Column(name="fraisDossier", type="decimal", precision=11, scale=3, nullable=true)
      */
-    private $fraisDossier;
-    
+    private $fraisDossier ;
+
     /**
      * @var integer
      *
      * @ORM\Column(name="etat", type="integer")
      */
-    private $etat;
+    private $etat ;
 
     /**
      * @var string
      *
      * @ORM\Column(name="note", type="text", nullable=true)
      */
-    private $note;
+    private $note ;
 
     /**
      * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="factures")
      * @ORM\JoinColumn(name="suiviPar", referencedColumnName="id")
      */
-    protected $suiviPar;
-    
+    protected $suiviPar ;
+
     /**
      * @ORM\OneToMany(targetEntity="Ligne", mappedBy="entete")
      */
-    protected $lignes;
+    protected $lignes ;
 
     /**
      * Get id
@@ -151,7 +152,7 @@ class Entete
      */
     public function getId()
     {
-        return $this->id;
+        return $this->id ;
     }
 
     /**
@@ -162,9 +163,9 @@ class Entete
      */
     public function setReference($reference)
     {
-        $this->reference = $reference;
+        $this->reference = $reference ;
 
-        return $this;
+        return $this ;
     }
 
     /**
@@ -174,7 +175,7 @@ class Entete
      */
     public function getReference()
     {
-        return $this->reference;
+        return $this->reference ;
     }
 
     /**
@@ -185,9 +186,9 @@ class Entete
      */
     public function setDateCreation($dateCreation)
     {
-        $this->dateCreation = $dateCreation;
+        $this->dateCreation = $dateCreation ;
 
-        return $this;
+        return $this ;
     }
 
     /**
@@ -197,7 +198,7 @@ class Entete
      */
     public function getDateCreation()
     {
-        return $this->dateCreation;
+        return $this->dateCreation ;
     }
 
     /**
@@ -208,9 +209,9 @@ class Entete
      */
     public function setClient($client)
     {
-        $this->client = $client;
+        $this->client = $client ;
 
-        return $this;
+        return $this ;
     }
 
     /**
@@ -220,7 +221,7 @@ class Entete
      */
     public function getClient()
     {
-        return $this->client;
+        return $this->client ;
     }
 
     /**
@@ -231,9 +232,9 @@ class Entete
      */
     public function setNomClient($nomClient)
     {
-        $this->nomClient = $nomClient;
+        $this->nomClient = $nomClient ;
 
-        return $this;
+        return $this ;
     }
 
     /**
@@ -243,7 +244,7 @@ class Entete
      */
     public function getNomClient()
     {
-        return $this->nomClient;
+        return $this->nomClient ;
     }
 
     /**
@@ -254,9 +255,9 @@ class Entete
      */
     public function setAdresseClient($adresseClient)
     {
-        $this->adresseClient = $adresseClient;
+        $this->adresseClient = $adresseClient ;
 
-        return $this;
+        return $this ;
     }
 
     /**
@@ -266,7 +267,7 @@ class Entete
      */
     public function getAdresseClient()
     {
-        return $this->adresseClient;
+        return $this->adresseClient ;
     }
 
     /**
@@ -277,9 +278,9 @@ class Entete
      */
     public function setMatriculeFiscale($matriculeFiscale)
     {
-        $this->matriculeFiscale = $matriculeFiscale;
+        $this->matriculeFiscale = $matriculeFiscale ;
 
-        return $this;
+        return $this ;
     }
 
     /**
@@ -289,7 +290,7 @@ class Entete
      */
     public function getMatriculeFiscale()
     {
-        return $this->matriculeFiscale;
+        return $this->matriculeFiscale ;
     }
 
     /**
@@ -300,9 +301,9 @@ class Entete
      */
     public function setTel($tel)
     {
-        $this->tel = $tel;
+        $this->tel = $tel ;
 
-        return $this;
+        return $this ;
     }
 
     /**
@@ -312,7 +313,7 @@ class Entete
      */
     public function getTel()
     {
-        return $this->tel;
+        return $this->tel ;
     }
 
     /**
@@ -323,9 +324,9 @@ class Entete
      */
     public function setEmail($email)
     {
-        $this->email = $email;
+        $this->email = $email ;
 
-        return $this;
+        return $this ;
     }
 
     /**
@@ -335,7 +336,7 @@ class Entete
      */
     public function getEmail()
     {
-        return $this->email;
+        return $this->email ;
     }
 
     /**
@@ -346,9 +347,9 @@ class Entete
      */
     public function setMntFraisTaxable($mntFraisTaxable)
     {
-        $this->mntFraisTaxable = $mntFraisTaxable;
+        $this->mntFraisTaxable = $mntFraisTaxable ;
 
-        return $this;
+        return $this ;
     }
 
     /**
@@ -358,7 +359,7 @@ class Entete
      */
     public function getMntFraisTaxable()
     {
-        return $this->mntFraisTaxable;
+        return $this->mntFraisTaxable ;
     }
 
     /**
@@ -369,9 +370,9 @@ class Entete
      */
     public function setMntFraisNonTaxable($mntFraisNonTaxable)
     {
-        $this->mntFraisNonTaxable = $mntFraisNonTaxable;
+        $this->mntFraisNonTaxable = $mntFraisNonTaxable ;
 
-        return $this;
+        return $this ;
     }
 
     /**
@@ -381,7 +382,7 @@ class Entete
      */
     public function getMntFraisNonTaxable()
     {
-        return $this->mntFraisNonTaxable;
+        return $this->mntFraisNonTaxable ;
     }
 
     /**
@@ -392,9 +393,9 @@ class Entete
      */
     public function setTotalTva($totalTva)
     {
-        $this->totalTva = $totalTva;
+        $this->totalTva = $totalTva ;
 
-        return $this;
+        return $this ;
     }
 
     /**
@@ -404,7 +405,7 @@ class Entete
      */
     public function getTotalTva()
     {
-        return $this->totalTva;
+        return $this->totalTva ;
     }
 
     /**
@@ -415,9 +416,9 @@ class Entete
      */
     public function setTimbre($timbre)
     {
-        $this->timbre = $timbre;
+        $this->timbre = $timbre ;
 
-        return $this;
+        return $this ;
     }
 
     /**
@@ -427,7 +428,7 @@ class Entete
      */
     public function getTimbre()
     {
-        return $this->timbre;
+        return $this->timbre ;
     }
 
     /**
@@ -438,9 +439,9 @@ class Entete
      */
     public function setTotalRemise($totalRemise)
     {
-        $this->totalRemise = $totalRemise;
+        $this->totalRemise = $totalRemise ;
 
-        return $this;
+        return $this ;
     }
 
     /**
@@ -450,7 +451,7 @@ class Entete
      */
     public function getTotalRemise()
     {
-        return $this->totalRemise;
+        return $this->totalRemise ;
     }
 
     /**
@@ -461,9 +462,9 @@ class Entete
      */
     public function setFraisDossier($fraisDossier)
     {
-        $this->fraisDossier = $fraisDossier;
+        $this->fraisDossier = $fraisDossier ;
 
-        return $this;
+        return $this ;
     }
 
     /**
@@ -473,7 +474,7 @@ class Entete
      */
     public function getFraisDossier()
     {
-        return $this->fraisDossier;
+        return $this->fraisDossier ;
     }
 
     /**
@@ -484,9 +485,9 @@ class Entete
      */
     public function setNote($note)
     {
-        $this->note = $note;
+        $this->note = $note ;
 
-        return $this;
+        return $this ;
     }
 
     /**
@@ -496,7 +497,7 @@ class Entete
      */
     public function getNote()
     {
-        return $this->note;
+        return $this->note ;
     }
 
     /**
@@ -507,9 +508,9 @@ class Entete
      */
     public function setSuiviPar(\UserBundle\Entity\User $suiviPar = null)
     {
-        $this->suiviPar = $suiviPar;
+        $this->suiviPar = $suiviPar ;
 
-        return $this;
+        return $this ;
     }
 
     /**
@@ -519,7 +520,7 @@ class Entete
      */
     public function getSuiviPar()
     {
-        return $this->suiviPar;
+        return $this->suiviPar ;
     }
 
     /**
@@ -530,9 +531,9 @@ class Entete
      */
     public function setEtat($etat)
     {
-        $this->etat = $etat;
+        $this->etat = $etat ;
 
-        return $this;
+        return $this ;
     }
 
     /**
@@ -542,24 +543,25 @@ class Entete
      */
     public function getEtat()
     {
-        return $this->etat;
+        return $this->etat ;
     }
-    
+
     public function showEtat()
     {
-        if($this->etat==1)
-            return "Brouillon";
-        if($this->etat==2)
-            return "Validée";
-        if($this->etat==9)
-            return "Annulée";
+        if ($this->etat == 1)
+            return "Brouillon" ;
+        if ($this->etat == 2)
+            return "Validée" ;
+        if ($this->etat == 9)
+            return "Annulée" ;
     }
+
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->lignes = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->lignes = new \Doctrine\Common\Collections\ArrayCollection() ;
     }
 
     /**
@@ -570,9 +572,9 @@ class Entete
      */
     public function addLigne(\FactureBundle\Entity\Ligne $lignes)
     {
-        $this->lignes[] = $lignes;
+        $this->lignes[] = $lignes ;
 
-        return $this;
+        return $this ;
     }
 
     /**
@@ -582,7 +584,7 @@ class Entete
      */
     public function removeLigne(\FactureBundle\Entity\Ligne $lignes)
     {
-        $this->lignes->removeElement($lignes);
+        $this->lignes->removeElement($lignes) ;
     }
 
     /**
@@ -592,40 +594,41 @@ class Entete
      */
     public function getLignes()
     {
-        return $this->lignes;
+        return $this->lignes ;
     }
-    
+
     public function update()
     {
-        $mntFraisTaxable=0;
-        $mntFraisNonTaxable=0;
-        $Tva=0;
-        $Remise=0;
-        $FraisDossier=0;
-        
-        foreach($this->lignes as  $ligne)
+        $mntFraisTaxable = 0 ;
+        $mntFraisNonTaxable = 0 ;
+        $Tva = 0 ;
+        $Remise = 0 ;
+        $FraisDossier = 0 ;
+
+        foreach ($this->lignes as $ligne)
         {
-            $mntFraisTaxable+=$ligne->getMontantTaxable();
-            $mntFraisNonTaxable+=$ligne->getMontantNonTaxable();
-            $Tva+=$ligne->getMntTva();
-            $Remise+=$ligne->getMontantRemise();
-            $FraisDossier+=$ligne->getFraisDossier();
+            $mntFraisTaxable+=$ligne->getMontantTaxable() ;
+            $mntFraisNonTaxable+=$ligne->getMontantNonTaxable() ;
+            $Tva+=$ligne->getMntTva() ;
+            $Remise+=$ligne->getMontantRemise() ;
+            $FraisDossier+=$ligne->getFraisDossier() ;
         }
-        
-        $this->mntFraisTaxable=$mntFraisTaxable;
-        $this->mntFraisNonTaxable=$mntFraisNonTaxable;
-        $this->totalTva=$Tva;
-        $this->totalRemise=$Remise;
-        $this->fraisDossier=$FraisDossier;
+
+        $this->mntFraisTaxable = $mntFraisTaxable ;
+        $this->mntFraisNonTaxable = $mntFraisNonTaxable ;
+        $this->totalTva = $Tva ;
+        $this->totalRemise = $Remise ;
+        $this->fraisDossier = $FraisDossier ;
     }
-    
+
     public function getTotal()
     {
-        return $this->mntFraisNonTaxable+
-               $this->mntFraisTaxable+
-               $this->timbre+
-               $this->totalTva+
-               $this->fraisDossier+
-               (-$this->totalRemise);
+        return $this->mntFraisNonTaxable +
+                $this->mntFraisTaxable +
+                $this->timbre +
+                $this->totalTva +
+                $this->fraisDossier +
+                (-$this->totalRemise) ;
     }
+
 }

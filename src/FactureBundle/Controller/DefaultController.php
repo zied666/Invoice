@@ -286,10 +286,29 @@ class DefaultController extends Controller
         $em->remove($ligne);
         $em->persist($entete);
         $em->flush();
-        $session->getFlashBag()->add('success', "ligne crée avec succées avec succées ");
+        $session->getFlashBag()->add('success', "ligne crée avec succées ");
         return $this->redirect($this->generateUrl("addligne", array('id'=>$ligne->getEntete()->getId())));
     }
     
-    
+    public function validerAction(Entete $entete)
+    {
+        $em=  $this->getDoctrine()->getManager();
+        $session=  $this->getRequest()->getSession();
+        $entete->setEtat(2)->setReference($this->container->get('setNewReference')->reference());
+        $em->persist($entete);
+        $em->flush();
+        $session->getFlashBag()->add('success', "Votre facture est validée avec succées ");
+        return $this->redirect($this->generateUrl("liste"));
+    }
+    public function annulerAction(Entete $entete)
+    {
+        $em=  $this->getDoctrine()->getManager();
+        $session=  $this->getRequest()->getSession();
+        $entete->setEtat(9);
+        $em->persist($entete);
+        $em->flush();
+        $session->getFlashBag()->add('success', "Votre facture est validée avec succées ");
+        return $this->redirect($this->generateUrl("liste"));
+    }
 
 }

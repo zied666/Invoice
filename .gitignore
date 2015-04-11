@@ -8,4 +8,6 @@
 /bin/
 /composer.phar
 /vendor/
+/nbproject/
 /web/bundles/
+/web/uploads/

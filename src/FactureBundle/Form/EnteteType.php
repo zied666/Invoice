@@ -1,10 +1,10 @@
 <?php
 
-namespace FactureBundle\Form;
+namespace FactureBundle\Form ;
 
-use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\Form\AbstractType ;
+use Symfony\Component\Form\FormBuilderInterface ;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface ;
 
 class EnteteType extends AbstractType
 {
@@ -13,12 +13,12 @@ class EnteteType extends AbstractType
      * @param FormBuilderInterface $builder
      * @param array $options
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder , array $options)
     {
         $builder
                 ->add('reference')
                 ->add('dateCreation')
-                ->add('client', 'hidden')
+                ->add('client' , 'hidden')
                 ->add('nomClient')
                 ->add('adresseClient')
                 ->add('matriculeFiscale')
@@ -41,9 +41,9 @@ class EnteteType extends AbstractType
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults(array (
             'data_class' => 'FactureBundle\Entity\Entete'
-        ));
+        )) ;
     }
 
     /**
@@ -51,7 +51,7 @@ class EnteteType extends AbstractType
      */
     public function getName()
     {
-        return 'facturebundle_entete';
+        return 'facturebundle_entete' ;
     }
 
 }

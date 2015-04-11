@@ -45,3 +45,11 @@ addligne:
 deleteLigne:
     path:     /delete/{id}
     defaults: { _controller: FactureBundle:Default:deleteLigne }  
+
+valider:
+    path:     /valider/{id}
+    defaults: { _controller: FactureBundle:Default:valider }  
+
+annuler:
+    path:     /annuler/{id}
+    defaults: { _controller: FactureBundle:Default:annuler }  

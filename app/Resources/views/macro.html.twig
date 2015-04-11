@@ -1,9 +1,17 @@
 {% macro edit(path) %}
     <a href="{{ path }}" class="btn btn-transparent btn-xs" tooltip-placement="top" tooltip="Modifier"><i class="fa fa-pencil"></i></a>
-    {% endmacro %}
+{% endmacro %}
 
 {% macro delete(path) %}
     <a href="{{ path }}" class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" tooltip="Supprimer" onclick="javascript:return(confirm('Etes-vous certain de vouloir supprimer cette ligne ?'))"><i class="fa fa-times fa fa-white"></i></a>
+    {% endmacro %}
+
+{% macro annuler(path) %}
+    <a href="{{ path }}" class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" tooltip="Annuler" onclick="javascript:return(confirm('Etes-vous certain de vouloir annuler cette ligne ?'))"><i class="fa fa-remove"></i></a>
+    {% endmacro %}
+
+{% macro valider(path) %}
+    <a href="{{ path }}" class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" tooltip="Vallider" onclick="javascript:return(confirm('Etes-vous certain de vouloir  valider cette ligne ?'))"><i class="fa fa-check"></i></a>
     {% endmacro %}
 
 {% macro enregistrer() %}

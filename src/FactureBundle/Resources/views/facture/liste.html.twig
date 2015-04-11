@@ -32,6 +32,10 @@
                                 <td class="center">{{ entete.dateCreation|date('d/m/Y') }} par {{ entete.suiviPar.username }}</td>
                                 <td class="center">
                                     {{ macro.edit(path('addligne',{'id':entete.id})) }}
+                                    {% if entete.etat==1 %}
+                                        {{ macro.valider(path('valider',{'id':entete.id})) }}
+                                        {{ macro.annuler(path('annuler',{'id':entete.id})) }}
+                                    {% endif %}
                                 </td>
                             </tr>
                         {% endfor %}
