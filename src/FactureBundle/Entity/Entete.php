@@ -626,7 +626,6 @@ class Entete
         return $this->mntFraisNonTaxable +
                 $this->mntFraisTaxable +
                 $this->timbre +
-                $this->totalTva +
                 $this->fraisDossier +
                 (-$this->totalRemise) ;
     }

@@ -50,6 +50,12 @@
             });
             client.change(function() {
                 var val = $(this).val();
+                        $("#facturebundle_entete_client").val("Loading...");
+                        $("#facturebundle_entete_nomClient").val("Loading...");
+                        $("#facturebundle_entete_adresseClient").val("Loading...");
+                        $("#facturebundle_entete_matriculeFiscale").val("Loading...");
+                        $("#facturebundle_entete_tel").val("Loading...");
+                        $("#facturebundle_entete_email").val("Loading...");
                 $.ajax({
                     url: '{{ path('detailsClient') }}',
                     data: 'id=' + val,

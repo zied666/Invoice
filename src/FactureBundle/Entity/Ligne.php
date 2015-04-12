@@ -1,8 +1,8 @@
 <?php
 
-namespace FactureBundle\Entity;
+namespace FactureBundle\Entity ;
 
-use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping as ORM ;
 
 /**
  * Ligne
@@ -12,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Ligne
 {
+
     /**
      * @var integer
      *
@@ -19,130 +20,128 @@ class Ligne
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
-    
+    private $id ;
+
     /**
      * @ORM\ManyToOne(targetEntity="Entete", inversedBy="lignes")
      * @ORM\JoinColumn(name="entete_id", referencedColumnName="id")
      */
-    protected $entete;
-    
+    protected $entete ;
+
     /**
      * @ORM\ManyToOne(targetEntity="Ligne", inversedBy="fils")
      * @ORM\JoinColumn(name="parent_id", referencedColumnName="id")
      */
-    protected $parent;
-    
+    protected $parent ;
+
     /**
      * @ORM\OneToMany(targetEntity="Ligne", mappedBy="parent")
      */
-    protected $fils;
+    protected $fils ;
 
-    
     /**
      * @ORM\ManyToOne(targetEntity="Produit")
      * @ORM\JoinColumn(name="produit_id", referencedColumnName="id")
      */
-    protected $produit;
+    protected $produit ;
 
     /**
      * @var string
      *
      * @ORM\Column(name="designation", type="string", length=255)
      */
-    private $designation;
+    private $designation ;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="quantite", type="integer")
      */
-    private $quantite;
+    private $quantite ;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="nbrAdulte", type="integer")
      */
-    private $nbrAdulte;
+    private $nbrAdulte ;
 
     /**
      * @var string
      *
      * @ORM\Column(name="puhtAdulte", type="decimal", precision=11, scale=3)
      */
-    private $puhtAdulte;
+    private $puhtAdulte ;
 
     /**
      * @var string
      *
      * @ORM\Column(name="puttAdulte", type="decimal", precision=11, scale=3)
      */
-    private $puttAdulte;
+    private $puttAdulte ;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="nbrEnfant", type="integer",nullable=true)
      */
-    private $nbrEnfant;
+    private $nbrEnfant ;
 
     /**
      * @var string
      *
      * @ORM\Column(name="puhtEnfant", type="decimal", precision=11, scale=3,nullable=true)
      */
-    private $puhtEnfant;
+    private $puhtEnfant ;
 
     /**
      * @var string
      *
      * @ORM\Column(name="puttEnfant", type="decimal", precision=11, scale=3,nullable=true)
      */
-    private $puttEnfant;
+    private $puttEnfant ;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="tauxTva", type="integer")
      */
-    private $tauxTva;
+    private $tauxTva ;
 
     /**
      * @var string
      *
      * @ORM\Column(name="mntTva", type="decimal", precision=11, scale=3)
      */
-    private $mntTva;
+    private $mntTva ;
 
     /**
      * @var string
      *
      * @ORM\Column(name="montantTaxable", type="decimal", precision=11, scale=3)
      */
-    private $montantTaxable;
+    private $montantTaxable ;
 
     /**
      * @var string
      *
      * @ORM\Column(name="montantNonTaxable", type="decimal", precision=11, scale=3)
      */
-    private $montantNonTaxable;
+    private $montantNonTaxable ;
 
     /**
      * @var string
      *
      * @ORM\Column(name="montantRemise", type="decimal", precision=11, scale=3,nullable=true)
      */
-    private $montantRemise;
+    private $montantRemise ;
 
     /**
      * @var string
      *
      * @ORM\Column(name="fraisDossier", type="decimal", precision=11, scale=3,nullable=true)
      */
-    private $fraisDossier;
-
+    private $fraisDossier ;
 
     /**
      * Get id
@@ -151,7 +150,7 @@ class Ligne
      */
     public function getId()
     {
-        return $this->id;
+        return $this->id ;
     }
 
     /**
@@ -162,9 +161,9 @@ class Ligne
      */
     public function setDesignation($designation)
     {
-        $this->designation = $designation;
+        $this->designation = $designation ;
 
-        return $this;
+        return $this ;
     }
 
     /**
@@ -174,7 +173,7 @@ class Ligne
      */
     public function getDesignation()
     {
-        return $this->designation;
+        return $this->designation ;
     }
 
     /**
@@ -185,9 +184,9 @@ class Ligne
      */
     public function setQuantite($quantite)
     {
-        $this->quantite = $quantite;
+        $this->quantite = $quantite ;
 
-        return $this;
+        return $this ;
     }
 
     /**
@@ -197,7 +196,7 @@ class Ligne
      */
     public function getQuantite()
     {
-        return $this->quantite;
+        return $this->quantite ;
     }
 
     /**
@@ -208,9 +207,9 @@ class Ligne
      */
     public function setNbrAdulte($nbrAdulte)
     {
-        $this->nbrAdulte = $nbrAdulte;
+        $this->nbrAdulte = $nbrAdulte ;
 
-        return $this;
+        return $this ;
     }
 
     /**
@@ -220,7 +219,7 @@ class Ligne
      */
     public function getNbrAdulte()
     {
-        return $this->nbrAdulte;
+        return $this->nbrAdulte ;
     }
 
     /**
@@ -231,9 +230,9 @@ class Ligne
      */
     public function setPuhtAdulte($puhtAdulte)
     {
-        $this->puhtAdulte = $puhtAdulte;
+        $this->puhtAdulte = $puhtAdulte ;
 
-        return $this;
+        return $this ;
     }
 
     /**
@@ -243,7 +242,7 @@ class Ligne
      */
     public function getPuhtAdulte()
     {
-        return $this->puhtAdulte;
+        return $this->puhtAdulte ;
     }
 
     /**
@@ -254,9 +253,9 @@ class Ligne
      */
     public function setPuttAdulte($puttAdulte)
     {
-        $this->puttAdulte = $puttAdulte;
+        $this->puttAdulte = $puttAdulte ;
 
-        return $this;
+        return $this ;
     }
 
     /**
@@ -266,7 +265,7 @@ class Ligne
      */
     public function getPuttAdulte()
     {
-        return $this->puttAdulte;
+        return $this->puttAdulte ;
     }
 
     /**
@@ -277,9 +276,9 @@ class Ligne
      */
     public function setNbrEnfant($nbrEnfant)
     {
-        $this->nbrEnfant = $nbrEnfant;
+        $this->nbrEnfant = $nbrEnfant ;
 
-        return $this;
+        return $this ;
     }
 
     /**
@@ -289,7 +288,7 @@ class Ligne
      */
     public function getNbrEnfant()
     {
-        return $this->nbrEnfant;
+        return $this->nbrEnfant ;
     }
 
     /**
@@ -300,9 +299,9 @@ class Ligne
      */
     public function setPuhtEnfant($puhtEnfant)
     {
-        $this->puhtEnfant = $puhtEnfant;
+        $this->puhtEnfant = $puhtEnfant ;
 
-        return $this;
+        return $this ;
     }
 
     /**
@@ -312,7 +311,7 @@ class Ligne
      */
     public function getPuhtEnfant()
     {
-        return $this->puhtEnfant;
+        return $this->puhtEnfant ;
     }
 
     /**
@@ -323,9 +322,9 @@ class Ligne
      */
     public function setPuttEnfant($puttEnfant)
     {
-        $this->puttEnfant = $puttEnfant;
+        $this->puttEnfant = $puttEnfant ;
 
-        return $this;
+        return $this ;
     }
 
     /**
@@ -335,7 +334,7 @@ class Ligne
      */
     public function getPuttEnfant()
     {
-        return $this->puttEnfant;
+        return $this->puttEnfant ;
     }
 
     /**
@@ -346,9 +345,9 @@ class Ligne
      */
     public function setTauxTva($tauxTva)
     {
-        $this->tauxTva = $tauxTva;
+        $this->tauxTva = $tauxTva ;
 
-        return $this;
+        return $this ;
     }
 
     /**
@@ -358,7 +357,7 @@ class Ligne
      */
     public function getTauxTva()
     {
-        return $this->tauxTva;
+        return $this->tauxTva ;
     }
 
     /**
@@ -369,9 +368,9 @@ class Ligne
      */
     public function setMntTva($mntTva)
     {
-        $this->mntTva = $mntTva;
+        $this->mntTva = $mntTva ;
 
-        return $this;
+        return $this ;
     }
 
     /**
@@ -381,7 +380,7 @@ class Ligne
      */
     public function getMntTva()
     {
-        return $this->mntTva;
+        return $this->mntTva ;
     }
 
     /**
@@ -392,9 +391,9 @@ class Ligne
      */
     public function setMontantTaxable($montantTaxable)
     {
-        $this->montantTaxable = $montantTaxable;
+        $this->montantTaxable = $montantTaxable ;
 
-        return $this;
+        return $this ;
     }
 
     /**
@@ -404,7 +403,7 @@ class Ligne
      */
     public function getMontantTaxable()
     {
-        return $this->montantTaxable;
+        return $this->montantTaxable ;
     }
 
     /**
@@ -415,9 +414,9 @@ class Ligne
      */
     public function setMontantNonTaxable($montantNonTaxable)
     {
-        $this->montantNonTaxable = $montantNonTaxable;
+        $this->montantNonTaxable = $montantNonTaxable ;
 
-        return $this;
+        return $this ;
     }
 
     /**
@@ -427,7 +426,7 @@ class Ligne
      */
     public function getMontantNonTaxable()
     {
-        return $this->montantNonTaxable;
+        return $this->montantNonTaxable ;
     }
 
     /**
@@ -438,9 +437,9 @@ class Ligne
      */
     public function setMontantRemise($montantRemise)
     {
-        $this->montantRemise = $montantRemise;
+        $this->montantRemise = $montantRemise ;
 
-        return $this;
+        return $this ;
     }
 
     /**
@@ -450,7 +449,7 @@ class Ligne
      */
     public function getMontantRemise()
     {
-        return $this->montantRemise;
+        return $this->montantRemise ;
     }
 
     /**
@@ -461,9 +460,9 @@ class Ligne
      */
     public function setFraisDossier($fraisDossier)
     {
-        $this->fraisDossier = $fraisDossier;
+        $this->fraisDossier = $fraisDossier ;
 
-        return $this;
+        return $this ;
     }
 
     /**
@@ -473,14 +472,15 @@ class Ligne
      */
     public function getFraisDossier()
     {
-        return $this->fraisDossier;
+        return $this->fraisDossier ;
     }
+
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->fils = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->fils = new \Doctrine\Common\Collections\ArrayCollection() ;
     }
 
     /**
@@ -491,9 +491,9 @@ class Ligne
      */
     public function setEntete(\FactureBundle\Entity\Entete $entete = null)
     {
-        $this->entete = $entete;
+        $this->entete = $entete ;
 
-        return $this;
+        return $this ;
     }
 
     /**
@@ -503,7 +503,7 @@ class Ligne
      */
     public function getEntete()
     {
-        return $this->entete;
+        return $this->entete ;
     }
 
     /**
@@ -514,9 +514,9 @@ class Ligne
      */
     public function setParent(\FactureBundle\Entity\Ligne $parent = null)
     {
-        $this->parent = $parent;
+        $this->parent = $parent ;
 
-        return $this;
+        return $this ;
     }
 
     /**
@@ -526,7 +526,7 @@ class Ligne
      */
     public function getParent()
     {
-        return $this->parent;
+        return $this->parent ;
     }
 
     /**
@@ -537,9 +537,9 @@ class Ligne
      */
     public function addFil(\FactureBundle\Entity\Ligne $fils)
     {
-        $this->fils[] = $fils;
+        $this->fils[] = $fils ;
 
-        return $this;
+        return $this ;
     }
 
     /**
@@ -549,7 +549,7 @@ class Ligne
      */
     public function removeFil(\FactureBundle\Entity\Ligne $fils)
     {
-        $this->fils->removeElement($fils);
+        $this->fils->removeElement($fils) ;
     }
 
     /**
@@ -559,7 +559,7 @@ class Ligne
      */
     public function getFils()
     {
-        return $this->fils;
+        return $this->fils ;
     }
 
     /**
@@ -570,9 +570,9 @@ class Ligne
      */
     public function setProduit(\FactureBundle\Entity\Produit $produit = null)
     {
-        $this->produit = $produit;
+        $this->produit = $produit ;
 
-        return $this;
+        return $this ;
     }
 
     /**
@@ -582,16 +582,45 @@ class Ligne
      */
     public function getProduit()
     {
-        return $this->produit;
+        return $this->produit ;
     }
-    
+
     public function __toString()
     {
-        return $this->designation;
+        return $this->designation ;
     }
-    
+
     public function calculeTva()
     {
-        $this->mntTva=$this->montantTaxable*$this->tauxTva/100;
+        $this->mntTva = $this->montantTaxable-(($this->montantTaxable*100)/($this->tauxTva+100)) ;
+
+        return $this ;
     }
+
+    public function calculMontantNonTaxable()
+    {
+        $this->setMontantNonTaxable(
+                (
+                ($this->getPuhtAdulte() * $this->getNbrAdulte()) +
+                ($this->getPuhtEnfant() + $this->getNbrEnfant())
+                ) * $this->getQuantite()) ;
+
+        return $this ;
+    }
+
+    public function calculMontantTaxable()
+    {
+        $this->setMontantTaxable(
+                ((($this->getPuttAdulte() * $this->getNbrAdulte()) + ($this->getPuttEnfant() + $this->getNbrEnfant())) * $this->getQuantite()) -
+                $this->montantNonTaxable
+        ) ;
+
+        return $this ;
+    }
+    
+    public function getTotal()
+    {
+        return $this->montantNonTaxable+$this->montantTaxable+$this->fraisDossier-$this->montantRemise;
+    }
+
 }
