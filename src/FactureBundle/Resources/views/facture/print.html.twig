@@ -1,136 +1,107 @@
-{% extends "::facture.html.twig" %}
-{% block title %}Factures{% endblock %}
-{% block body %}
-    <div id="page-wrap">
-
-        <textarea id="header">Facture</textarea>
-
-        <div id="identity">
-
-            <textarea id="address">Chris Coyier
-123 Appleseed Street
-Appleville, WI 53719
-
-Phone: (555) 555-5555</textarea>
-
-            <div id="logo">
-
-                <img id="" src="{{ asset('facture/images/logo.png')}}" alt="logo" />
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Facture</title>
+        <link rel="stylesheet" href="{{ asset('facture/style.css') }}">
+        <link rel="license" href="http://www.opensource.org/licenses/mit-license/">
+        <script src="{{ asset('facture/script.js') }}"></script>
+    </head>
+    <body>
+        <header>
+            <h1>Facture</h1>
+            <address contenteditable>
+                <p>Jonathan Neal</p>
+                <p>101 E. Chapman Ave<br>Orange, CA 92866</p>
+                <p>(800) 555-1234</p>
+            </address>
+            <span><img alt="" src="{{ asset('facture/logo.png') }}"><input type="file" accept="image/*"></span>
+        </header>
+        <article>
+            <h1>Recipient</h1>
+            <address contenteditable>
+                <p>{{ entete.nomClient }}</p>
+                <p>{{ entete.tel }}</p>
+                <p>{{ entete.email }}</p>
+            </address>
+            <table class="meta">
+                <tr>
+                    <th><span contenteditable>Ref</span></th>
+                    <td><span contenteditable>{{ entete.reference }}</span></td>
+                </tr>
+                <tr>
+                    <th><span contenteditable>Etat</span></th>
+                    <td><span contenteditable>{{ entete.showEtat }}</span></td>
+                </tr>
+                <tr>
+                    <th><span contenteditable>Date</span></th>
+                    <td><span contenteditable>{{ entete.dateCreation|date('d/m/Y') }} par {{ entete.suiviPar.username }}</td>
+                </tr>
+            </table>
+            <table class="inventory">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Désignation</th>
+                        <th>Nbr Adulte</th>
+                        <th>Prix TTC</th>
+                        <th>Nbr Enfant</th>
+                        <th>Prix TTC</th>
+                        <th>Quantité/nbr nuités</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for ligne in entete.lignes if ligne.parent is null %}
+                        <tr class="item-row">
+                            <td>{{ loop.index }}</td>
+                            <td>{{ ligne.designation }}</td>
+                            <td>{{ ligne.nbrAdulte }}</td>
+                            <td><span data-prefix>{{ ligne.puttAdulte }}</span></td>
+                            <td>{{ ligne.nbrEnfant }}</td>
+                            <td style="text-align: right;"><span data-prefix>{{ ligne.puttEnfant }}</span></td>
+                            <td>{{ ligne.quantite }}</td>
+                            <td style="text-align: right;"><span data-prefix>{{ ligne.getTotalFacture|number_format(3, '.', '') }}</span></td>
+                        </tr>
+                        {% for lign in ligne.fils %}
+                            <tr class="item-row">
+                                <td></td>
+                                <td>{{ lign.designation }}</td>
+                                <td>{{ lign.nbrAdulte }}</td>
+                                <td><span class="price">{{ lign.puttAdulte }}</span></td>
+                                <td>{{ lign.nbrEnfant }}</td>
+                                <td style="text-align: right;"><span class="price">{{ lign.puttEnfant }}</span></td>
+                                <td>{{ lign.quantite }}</td>
+                                <td style="text-align: right;"><span class="price">{{ lign.getTotalFacture|number_format(3, '.', '') }}</span></td>
+                            </tr>
+                        {% endfor %}
+                    {% endfor %}
+                </tbody>
+            </table>
+            <table class="balance">
+                <tr>
+                    <th><span contenteditable>Remise</span></th>
+                    <td><span data-prefix>- {{ entete.totalRemise }}</span></td>
+                </tr>
+                <tr>
+                    <th><span contenteditable>Frais dossier</span></th>
+                    <td><span data-prefix>{{ entete.fraisDossier }}</span></td>
+                </tr>
+                <tr>
+                    <th><span contenteditable>Timbre</span></th>
+                    <td><span data-prefix>{{ entete.timbre }}</span></td>
+                </tr>
+                <tr>
+                    <th><span contenteditable>Total</span></th>
+                    <td><span data-prefix>{{ entete.getTotal|number_format(3, '.', '') }}</span></td>
+                </tr>
+            </table>
+        </article>
+        <aside>
+            <h1><span contenteditable>Additional Notes</span></h1>
+            <div contenteditable>
+                <p>A finance charge of 1.5% will be made on unpaid balances after 30 days.</p>
             </div>
-
-        </div>
-
-        <div style="clear:both"></div>
-
-        <div id="customer">
-
-
-            <table id="meta">
-                <tr>
-                    <td class="meta-head">Ref #</td>
-                    <td><textarea>{{ entete.reference }}</textarea></td>
-                </tr>
-                <tr>
-                    <td class="meta-head">Etat</td>
-                    <td>{{ entete.showEtat }}</td>
-                </tr>
-                <tr>
-                    <td class="meta-head">Date</td>
-                    <td><textarea id="date">{{ entete.dateCreation|date('d/m/Y') }} par {{ entete.suiviPar.username }}</textarea></td>
-                </tr>
-
-            </table>
-            <table id="meta"  style="float: inherit">
-                <tr>
-                    <td class="meta-head">Client</td>
-                    <td><textarea>{{ entete.nomClient }}</textarea></td>
-                </tr>
-                <tr>
-                    <td class="meta-head">Tel</td>
-                    <td>{{ entete.tel }}</td>
-                </tr>
-                <tr>
-                    <td class="meta-head">Emal</td>
-                    <td><textarea id="date">{{ entete.email}}</textarea></td>
-                </tr>
-
-            </table>
-
-        </div>
-
-        <table id="items">
-
-            <tr>
-                <th></th>
-                <th>Désignation</th>
-                <th>Nbr Adulte</th>
-                <th>Prix TTC</th>
-                <th>Nbr Enfant</th>
-                <th>Prix TTC</th>
-                <th>Quantité/nbr nuités</th>
-                <th>Total</th>
-            </tr>
-            {% for ligne in entete.lignes if ligne.parent is null %}
-                <tr class="item-row">
-                    <td>{{ loop.index }}</td>
-                    <td>{{ ligne.designation }}</td>
-                    <td>{{ ligne.nbrAdulte }}</td>
-                    <td><span class="price">{{ ligne.puttAdulte }}</span></td>
-                    <td>{{ ligne.nbrEnfant }}</td>
-                    <td><span class="price">{{ ligne.puttEnfant }}</span></td>
-                    <td>{{ ligne.quantite }}</td>
-                    <td><span class="price">{{ ligne.getTotalFacture }}</span></td>
-                </tr>
-                {% for lign in ligne.fils %}
-                <tr class="item-row">
-                    <td></td>
-                    <td>{{ lign.designation }}</td>
-                    <td>{{ lign.nbrAdulte }}</td>
-                    <td><span class="price">{{ lign.puttAdulte }}</span></td>
-                    <td>{{ lign.nbrEnfant }}</td>
-                    <td><span class="price">{{ lign.puttEnfant }}</span></td>
-                    <td>{{ lign.quantite }}</td>
-                    <td><span class="price">{{ lign.getTotalFacture }}</span></td>
-                </tr>
-                {% endfor %}
-            {% endfor %}
-            <tr id="hiderow">
-                <td colspan="8"></td>
-            </tr>
-            <tr>
-                <td colspan="5" class="blank"> </td>
-                <td colspan="2" class="total-line">Sum</td>
-                <td class="total-value"><div id="subtotal">{{ entete.mntFraisTaxable + entete.mntFraisNonTaxable }}</div></td>
-            </tr>
-            <tr>
-                <td colspan="5" class="blank"> </td>
-                <td colspan="2" class="total-line">Remis</td>
-                <td class="total-value"><div id="total">- {{ entete.totalRemise }}</div></td>
-            </tr>
-            <tr>
-                <td colspan="5" class="blank"> </td>
-                <td colspan="2" class="total-line">Frais Dossier</td>
-
-                <td class="total-value"><textarea id="paid">{{ entete.fraisDossier }}</textarea></td>
-            </tr>
-            <tr>
-                <td colspan="5" class="blank"> </td>
-                <td colspan="2" class="total-line">Timbre</td>
-
-                <td class="total-value"><textarea id="paid">{{ entete.timbre }}</textarea></td>
-            </tr>
-            <tr>
-                <td colspan="5" class="blank"> </td>
-                <td colspan="2" class="total-line balance">Total</td>
-                <td class="total-value balance"><div class="due">{{ entete.getTotal }} DT</div></td>
-            </tr>
-
-        </table>
-
-        <div id="terms">
-            <h5>Terms</h5>
-            <textarea>NET 30 Days. Finance Charge of 1.5% will be made on unpaid balances after 30 days.</textarea>
-        </div>
-
-    </div>
-{% endblock %}
+        </aside>
+    </body>
+</html>

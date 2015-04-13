@@ -602,7 +602,7 @@ class Ligne
         $this->setMontantNonTaxable(
                 (
                 ($this->getPuhtAdulte() * $this->getNbrAdulte()) +
-                ($this->getPuhtEnfant() + $this->getNbrEnfant())
+                ($this->getPuhtEnfant() * $this->getNbrEnfant())
                 ) * $this->getQuantite()) ;
 
         return $this ;
@@ -611,7 +611,7 @@ class Ligne
     public function calculMontantTaxable()
     {
         $this->setMontantTaxable(
-                ((($this->getPuttAdulte() * $this->getNbrAdulte()) + ($this->getPuttEnfant() + $this->getNbrEnfant())) * $this->getQuantite()) -
+                ((($this->getPuttAdulte() * $this->getNbrAdulte()) + ($this->getPuttEnfant() * $this->getNbrEnfant())) * $this->getQuantite()) -
                 $this->montantNonTaxable
         ) ;
 

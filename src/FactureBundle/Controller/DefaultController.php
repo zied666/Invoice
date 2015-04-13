@@ -255,7 +255,6 @@ class DefaultController extends Controller
             if ($form->isValid())
             {
                 $ligne = $form->getData() ;
-                $ligne->setMontantNonTaxable((($ligne->getPuhtAdulte() * $ligne->getNbrAdulte()) + ($ligne->getPuhtEnfant() + $ligne->getNbrEnfant())) * $ligne->getQuantite()) ;
                 $ligne->setEntete($entete)
                         ->setTauxTva($ligne->getProduit()->getTva()->getValeur())
                         ->calculMontantNonTaxable()
