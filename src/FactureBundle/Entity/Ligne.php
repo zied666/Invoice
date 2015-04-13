@@ -622,5 +622,10 @@ class Ligne
     {
         return $this->montantNonTaxable+$this->montantTaxable+$this->fraisDossier-$this->montantRemise;
     }
+    
+    public function getTotalFacture()
+    {
+        return $this->montantNonTaxable+$this->montantTaxable;
+    }
 
 }

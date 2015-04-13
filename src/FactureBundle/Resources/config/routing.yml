@@ -53,3 +53,7 @@ valider:
 annuler:
     path:     /annuler/{id}
     defaults: { _controller: FactureBundle:Default:annuler }  
+
+print:
+    path:     /facture/{id}/print
+    defaults: { _controller: FactureBundle:Default:print }  

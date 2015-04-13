@@ -315,4 +315,10 @@ class DefaultController extends Controller
         return $this->redirect($this->generateUrl("liste")) ;
     }
 
+    public function printAction(Entete $entete)
+    {
+        return $this->render("FactureBundle:Facture:print.html.twig",array(
+            'entete'=>$entete
+        ));
+    }
 }

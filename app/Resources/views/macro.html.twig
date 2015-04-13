@@ -2,6 +2,10 @@
     <a href="{{ path }}" class="btn btn-transparent btn-xs" tooltip-placement="top" tooltip="Modifier"><i class="fa fa-pencil"></i></a>
 {% endmacro %}
 
+{% macro print(path) %}
+    <a href="{{ path }}" target="_blank" class="btn btn-transparent btn-xs" tooltip-placement="top" tooltip="Imprimer"><i class="fa fa-file"></i></a>
+{% endmacro %}
+
 {% macro delete(path) %}
     <a href="{{ path }}" class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" tooltip="Supprimer" onclick="javascript:return(confirm('Etes-vous certain de vouloir supprimer cette ligne ?'))"><i class="fa fa-times fa fa-white"></i></a>
     {% endmacro %}
