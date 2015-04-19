@@ -38,40 +38,41 @@
                     <td><span contenteditable>{{ entete.dateCreation|date('d/m/Y') }} par {{ entete.suiviPar.username }}</td>
                 </tr>
             </table>
-            <table class="inventory">
+                <table class="inventory" style="border-spacing: 0px">
                 <thead>
                     <tr>
-                        <th></th>
-                        <th>Désignation</th>
-                        <th>Nbr Adulte</th>
-                        <th>Prix TTC</th>
-                        <th>Nbr Enfant</th>
-                        <th>Prix TTC</th>
-                        <th>Quantité/nbr nuités</th>
-                        <th>Total</th>
+                        <th rowspan="2">Désignation</th>
+                        <th rowspan="2" style="width: 8%">Nuitées<br>Quantité</th>
+                        <th colspan="2" style="width: 10%">Pax</th>
+                        <th colspan="2" style="width: 20%">PU TTC</th>
+                        <th rowspan="2" style="width: 10%">Total</th>
+                    </tr>
+                    <tr>
+                        <th>Ad</th>
+                        <th>Enf</th>
+                        <th>Ad</th>
+                        <th>Enf</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for ligne in entete.lignes if ligne.parent is null %}
                         <tr class="item-row">
-                            <td>{{ loop.index }}</td>
                             <td>{{ ligne.designation }}</td>
-                            <td>{{ ligne.nbrAdulte }}</td>
+                            <td style="text-align: center">{{ ligne.quantite }}</td>
+                            <td style="text-align: center">{{ ligne.nbrAdulte }}</td>
+                            <td style="text-align: center">{{ ligne.nbrEnfant }}</td>
                             <td><span data-prefix>{{ ligne.puttAdulte }}</span></td>
-                            <td>{{ ligne.nbrEnfant }}</td>
                             <td style="text-align: right;"><span data-prefix>{{ ligne.puttEnfant }}</span></td>
-                            <td>{{ ligne.quantite }}</td>
                             <td style="text-align: right;"><span data-prefix>{{ ligne.getTotalFacture|number_format(3, '.', '') }}</span></td>
                         </tr>
                         {% for lign in ligne.fils %}
                             <tr class="item-row">
-                                <td></td>
                                 <td>{{ lign.designation }}</td>
-                                <td>{{ lign.nbrAdulte }}</td>
+                                <td style="text-align: center">{{ lign.quantite }}</td>
+                                <td style="text-align: center">{{ lign.nbrAdulte }}</td>
+                                <td style="text-align: center">{{ lign.nbrEnfant }}</td>
                                 <td><span class="price">{{ lign.puttAdulte }}</span></td>
-                                <td>{{ lign.nbrEnfant }}</td>
                                 <td style="text-align: right;"><span class="price">{{ lign.puttEnfant }}</span></td>
-                                <td>{{ lign.quantite }}</td>
                                 <td style="text-align: right;"><span class="price">{{ lign.getTotalFacture|number_format(3, '.', '') }}</span></td>
                             </tr>
                         {% endfor %}
