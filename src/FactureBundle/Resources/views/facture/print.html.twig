@@ -57,7 +57,7 @@
                 <tbody>
                     {% for ligne in entete.lignes if ligne.parent is null %}
                         <tr class="item-row">
-                            <td>{{ ligne.designation }}</td>
+                            <td {% if ligne.fils|length>0 %}style="border-bottom: none"{% endif %}>{{ ligne.designation }}</td>
                             <td style="text-align: center">{{ ligne.quantite }}</td>
                             <td style="text-align: center">{{ ligne.nbrAdulte }}</td>
                             <td style="text-align: center">{{ ligne.nbrEnfant }}</td>
@@ -67,7 +67,7 @@
                         </tr>
                         {% for lign in ligne.fils %}
                             <tr class="item-row">
-                                <td>{{ lign.designation }}</td>
+                                <td style="border-top: none;{% if loop.index < ligne.fils|length %}border-bottom:none;{% endif %}">{{ lign.designation }}</td>
                                 <td style="text-align: center">{{ lign.quantite }}</td>
                                 <td style="text-align: center">{{ lign.nbrAdulte }}</td>
                                 <td style="text-align: center">{{ lign.nbrEnfant }}</td>
@@ -81,12 +81,25 @@
             </table>
             <table class="balance">
                 <tr>
-                    <th><span contenteditable>Remise</span></th>
-                    <td><span data-prefix>- {{ entete.totalRemise }}</span></td>
+                    <th><span contenteditable>Total Non Taxable</span></th>
+                    <td><span data-prefix>{{ entete.mntFraisNonTaxable }}</span></td>
+                </tr>
+                <tr>
+                    <th><span contenteditable>Total Taxable</span></th>
+                    <td><span data-prefix>{{ entete.mntFraisTaxable - entete.totalTva }}</span></td>
                 </tr>
                 <tr>
                     <th><span contenteditable>Frais dossier</span></th>
                     <td><span data-prefix>{{ entete.fraisDossier }}</span></td>
+                </tr>
+                <tr>
+                    <th><span contenteditable>Remise</span></th>
+                    <td><span data-prefix>- {{ entete.totalRemise }}</span></td>
+                </tr>
+                </tr>
+                <tr>
+                    <th><span contenteditable>TVA</span></th>
+                    <td><span data-prefix>{{ entete.totalTva }}</span></td>
                 </tr>
                 <tr>
                     <th><span contenteditable>Timbre</span></th>
