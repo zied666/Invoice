@@ -15,6 +15,7 @@
                             <th>Frais Taxable</th>
                             <th>Frais Non Taxable</th>
                             <th>Remise</th>
+                            <th>Total</th>
                             <th class="center">Par</th>
                             <th class="center">Action</th>
                         </tr>
@@ -23,12 +24,17 @@
                         {% for entete in entetes %}
                             <tr>
                                 <td>{{ entete.id }}</td>
-                                <td>{{ entete.showEtat }}</td>
-                                <td>{{ entete.reference }}</td>
+                                {% if entete.etat==2 %}
+                                    <td>{{ entete.showEtat }}</td>
+                                    <td>{{ entete.reference }}</td>
+                                {% else %}
+                                    <td colspan="2">{{ entete.showEtat }}</td>
+                                {% endif %}
                                 <td>{{ entete.nomClient }}</td>
                                 <td>{{ entete.mntFraisTaxable }}</td>
                                 <td>{{ entete.mntFraisNonTaxable }}</td>
                                 <td>{{ entete.totalRemise }}</td>
+                                <td>{{ entete.getTotal|number_format(3,',','') }}</td>
                                 <td class="center">{{ entete.dateCreation|date('d/m/Y') }} par {{ entete.suiviPar.username }}</td>
                                 <td class="center">
                                     {{ macro.edit(path('addligne',{'id':entete.id})) }}

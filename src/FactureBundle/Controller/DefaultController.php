@@ -211,7 +211,7 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager() ;
         $session = $this->getRequest()->getSession() ;
         $request = $this->getRequest() ;
-        $entetes = $em->getRepository("FactureBundle:Entete")->findAll() ;
+        $entetes = $em->getRepository("FactureBundle:Entete")->findBy(array(), array('id' => 'DESC'));
         $paginator = $this->get('knp_paginator') ;
         $entetes = $paginator->paginate($entetes , $request->query->get('page' , 1) , 10) ;
         return $this->render("FactureBundle:facture:liste.html.twig" , array ('entetes' => $entetes)) ;
