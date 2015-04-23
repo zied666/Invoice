@@ -114,13 +114,6 @@ class Entete
     private $totalRemise ;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="fraisDossier", type="decimal", precision=11, scale=3, nullable=true)
-     */
-    private $fraisDossier ;
-
-    /**
      * @var integer
      *
      * @ORM\Column(name="etat", type="integer")
@@ -455,29 +448,6 @@ class Entete
     }
 
     /**
-     * Set fraisDossier
-     *
-     * @param string $fraisDossier
-     * @return Entete
-     */
-    public function setFraisDossier($fraisDossier)
-    {
-        $this->fraisDossier = $fraisDossier ;
-
-        return $this ;
-    }
-
-    /**
-     * Get fraisDossier
-     *
-     * @return string 
-     */
-    public function getFraisDossier()
-    {
-        return $this->fraisDossier ;
-    }
-
-    /**
      * Set note
      *
      * @param string $note
@@ -603,7 +573,6 @@ class Entete
         $mntFraisNonTaxable = 0 ;
         $Tva = 0 ;
         $Remise = 0 ;
-        $FraisDossier = 0 ;
 
         foreach ($this->lignes as $ligne)
         {
@@ -611,23 +580,21 @@ class Entete
             $mntFraisNonTaxable+=$ligne->getMontantNonTaxable() ;
             $Tva+=$ligne->getMntTva() ;
             $Remise+=$ligne->getMontantRemise() ;
-            $FraisDossier+=$ligne->getFraisDossier() ;
         }
 
         $this->mntFraisTaxable = $mntFraisTaxable ;
         $this->mntFraisNonTaxable = $mntFraisNonTaxable ;
         $this->totalTva = $Tva ;
         $this->totalRemise = $Remise ;
-        $this->fraisDossier = $FraisDossier ;
     }
 
     public function getTotal()
     {
         return $this->mntFraisNonTaxable +
                 $this->mntFraisTaxable +
-                $this->timbre +
-                $this->fraisDossier +
-                (-$this->totalRemise) ;
+                $this->timbre 
+//                +(-$this->totalRemise) 
+                ;
     }
 
 }

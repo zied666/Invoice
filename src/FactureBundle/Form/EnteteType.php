@@ -29,7 +29,6 @@ class EnteteType extends AbstractType
                 ->add('totalTva')
                 ->add('timbre')
                 ->add('totalRemise')
-                ->add('fraisDossier')
                 ->add('etat')
                 ->add('note')
                 ->add('suiviPar')

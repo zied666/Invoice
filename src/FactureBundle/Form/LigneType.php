@@ -29,7 +29,6 @@ class LigneType extends AbstractType
             ->add('montantTaxable')
             ->add('montantNonTaxable')
             ->add('montantRemise')
-            ->add('fraisDossier')
         ;
     }
     

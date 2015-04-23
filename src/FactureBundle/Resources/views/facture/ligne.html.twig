@@ -15,7 +15,6 @@
                             <th>M. frais taxable</th>
                             <th>Total Tva</th>
                             <th>Remise</th>
-                            <th>Frais dossier</th>
                             <th>Timbre</th>
                             <th>Total</th>
                             <th>Date creation</th>
@@ -30,7 +29,6 @@
                             <td>{{ entete.mntFraisNonTaxable }}</td>
                             <td>{{ entete.totalTva }}</td>
                             <td>{{ entete.totalRemise }}</td>
-                            <td>{{ entete.fraisDossier }}</td>
                             <td>{{ entete.timbre }}</td>
                             <td>{{ entete.getTotal }}</td>
                             <td>{{ entete.dateCreation|date('d/m/Y') }} par {{ entete.suiviPar.username }}</td>
@@ -64,7 +62,6 @@
                         </div>
                         <div class="row">
                             {{ formulaire.input("col-md-2","Montant remise",form.montantRemise,true) }}
-                            {{ formulaire.input("col-md-2","Frais dossier",form.fraisDossier,true) }}
                         </div>
                         {{ macro.enregistrer }}
                     </form>
@@ -85,7 +82,6 @@
                             <th>Mnt taxable</th>
                             <th>Mnt non taxable</th>
                             <th>Remise</th>
-                            <th>frais dossier</th>
                             <th>Total</th>
                             <th>Action</th>
                         </tr>
@@ -101,7 +97,6 @@
                                 <td>{{ ligne.montantTaxable }}</td>
                                 <td>{{ ligne.montantNonTaxable }}</td>
                                 <td>{{ ligne.montantRemise }}</td>
-                                <td>{{ ligne.fraisDossier }}</td>
                                 <td>{{ ligne.getTotal }}</td>
                                 <td class="center">
                                     {% if entete.etat==1 %}
@@ -119,7 +114,6 @@
                                     <td>{{ lign.montantTaxable }}</td>
                                     <td>{{ lign.montantNonTaxable }}</td>
                                     <td>{{ lign.montantRemise }}</td>
-                                    <td>{{ lign.fraisDossier }}</td>
                                     <td>{{ lign.getTotal }}</td>
                                     <td class="center">
                                         {% if entete.etat==1 %}

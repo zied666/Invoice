@@ -86,11 +86,7 @@
                 </tr>
                 <tr>
                     <th><span contenteditable>Total Taxable</span></th>
-                    <td><span data-prefix>{{ entete.mntFraisTaxable - entete.totalTva }}</span></td>
-                </tr>
-                <tr>
-                    <th><span contenteditable>Frais dossier</span></th>
-                    <td><span data-prefix>{{ entete.fraisDossier }}</span></td>
+                    <td><span data-prefix>{{ entete.mntFraisTaxable - entete.totalTva +  entete.totalRemise }}</span></td>
                 </tr>
                 <tr>
                     <th><span contenteditable>Remise</span></th>

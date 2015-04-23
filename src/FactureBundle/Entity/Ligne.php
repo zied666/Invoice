@@ -137,13 +137,6 @@ class Ligne
     private $montantRemise ;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="fraisDossier", type="decimal", precision=11, scale=3,nullable=true)
-     */
-    private $fraisDossier ;
-
-    /**
      * Get id
      *
      * @return integer 
@@ -453,29 +446,6 @@ class Ligne
     }
 
     /**
-     * Set fraisDossier
-     *
-     * @param string $fraisDossier
-     * @return Ligne
-     */
-    public function setFraisDossier($fraisDossier)
-    {
-        $this->fraisDossier = $fraisDossier ;
-
-        return $this ;
-    }
-
-    /**
-     * Get fraisDossier
-     *
-     * @return string 
-     */
-    public function getFraisDossier()
-    {
-        return $this->fraisDossier ;
-    }
-
-    /**
      * Constructor
      */
     public function __construct()
@@ -620,7 +590,7 @@ class Ligne
     
     public function getTotal()
     {
-        return $this->montantNonTaxable+$this->montantTaxable+$this->fraisDossier-$this->montantRemise;
+        return $this->montantNonTaxable+$this->montantTaxable-$this->montantRemise;
     }
     
     public function getTotalFacture()
