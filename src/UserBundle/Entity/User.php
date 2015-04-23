@@ -45,7 +45,7 @@ class User extends BaseUser
      * @param \FactureBundle\Entity\Entete $factures
      * @return User
      */
-    public function addFacture(\Facture\Entity\Entete $factures)
+    public function addFacture(\FactureBundle\Entity\Entete $factures)
     {
         $this->factures[] = $factures;
 
@@ -57,7 +57,7 @@ class User extends BaseUser
      *
      * @param \FactureBundle\Entity\Entete $factures
      */
-    public function removeFacture(\Facture\Entity\Entete $factures)
+    public function removeFacture(\FactureBundle\Entity\Entete $factures)
     {
         $this->factures->removeElement($factures);
     }

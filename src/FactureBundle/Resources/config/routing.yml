@@ -35,7 +35,7 @@ entete:
     defaults: { _controller: FactureBundle:Default:addEntete }    
     
 liste:
-    path:     /facture
+    path:     /factures
     defaults: { _controller: FactureBundle:Default:listeEntete }    
     
 addligne:
