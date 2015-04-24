@@ -71,7 +71,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h5 class="over-title margin-bottom-15"><span class="text-bold">Liste des lignes</span></h5>
-                <table class="table table-striped table-bordered table-hover table-full-width">
+                <table class="table  table-bordered table-full-width">
                     <thead>
                         <tr>
                             <th>Produit</th>
@@ -89,8 +89,8 @@
                     <tbody>
                         {% for ligne in entete.lignes if ligne.parent is null %}
                             <tr>
-                                <td>{{ ligne.produit.code }}</td>
-                                <td>{{ ligne.designation }}</td>
+                                <td  {% if ligne.fils|length>0 %}style="border-bottom: none"{% endif %}>{{ ligne.produit.code }}</td>
+                                <td  {% if ligne.fils|length>0 %}style="border-bottom: none"{% endif %}>{{ ligne.designation }}</td>
                                 <td>{{ ligne.quantite }}</td>
                                 <td>{{ ligne.nbrAdulte }}</td>
                                 <td>{{ ligne.nbrEnfant }}</td>
@@ -107,7 +107,8 @@
                             </tr>
                             {% for lign in ligne.fils %}
                                 <tr>
-                                    <td colspan="2" style="text-align: right;">{{ lign.designation }}</td>
+                                    <td {% if loop.index < ligne.fils|length %}style="border-bottom:none;"{% endif %}>{{ lign.produit.code }}</td>
+                                    <td {% if loop.index < ligne.fils|length %}style="border-bottom:none;"{% endif %}>{{ lign.designation }}</td>
                                     <td>{{ lign.quantite }}</td>
                                     <td>{{ lign.nbrAdulte }}</td>
                                     <td>{{ lign.nbrEnfant }}</td>
