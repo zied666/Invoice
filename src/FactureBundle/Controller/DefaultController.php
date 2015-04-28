@@ -316,7 +316,7 @@ class DefaultController extends Controller
 
     public function printAction(Entete $entete)
     {
-        return $this->render("FactureBundle:Facture:print.html.twig",array(
+        return $this->render("FactureBundle:facture:print.html.twig",array(
             'entete'=>$entete
         ));
     }

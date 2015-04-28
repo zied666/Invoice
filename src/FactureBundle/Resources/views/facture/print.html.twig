@@ -38,7 +38,7 @@
                     <td><span contenteditable>{{ entete.dateCreation|date('d/m/Y') }} par {{ entete.suiviPar.username }}</td>
                 </tr>
             </table>
-                <table class="inventory" style="border-spacing: 0px">
+            <table class="inventory" style="border-spacing: 0px">
                 <thead>
                     <tr>
                         <th rowspan="2">Désignation</th>
@@ -88,10 +88,12 @@
                     <th><span contenteditable>Total Taxable</span></th>
                     <td><span data-prefix>{{ entete.mntFraisTaxable - entete.totalTva +  entete.totalRemise }}</span></td>
                 </tr>
-                <tr>
-                    <th><span contenteditable>Remise</span></th>
-                    <td><span data-prefix>- {{ entete.totalRemise }}</span></td>
-                </tr>
+                {% if entete.totalRemise >0 %}
+                    <tr>
+                        <th><span contenteditable>Remise</span></th>
+                        <td><span data-prefix>- {{ entete.totalRemise }}</span></td>
+                    </tr>
+                {% endif %}
                 </tr>
                 <tr>
                     <th><span contenteditable>TVA</span></th>
