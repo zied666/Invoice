@@ -86,7 +86,7 @@
                 </tr>
                 <tr>
                     <th><span contenteditable>Total Taxable</span></th>
-                    <td><span data-prefix>{{ entete.mntFraisTaxable - entete.totalTva +  entete.totalRemise }}</span></td>
+                    <td><span data-prefix>{{ (entete.mntFraisTaxable - entete.totalTva +  entete.totalRemise)|number_format(3, '.', '') }}</span></td>
                 </tr>
                 {% if entete.totalRemise >0 %}
                     <tr>
